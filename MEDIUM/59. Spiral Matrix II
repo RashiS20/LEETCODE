@@ -1,0 +1,40 @@
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        vector<vector<int>> mat(n, vector<int>(n,1));
+        int t=0,l=0,c=1;
+        int d=n-1,r=n-1;
+        while(t<=d&&l<=r)
+        {
+            for(int j=l;j<=r;j++)
+            {
+                mat[t][j]=c;
+                c++;
+            }
+            t++;
+            for(int j=t;j<=d;j++)
+            {
+                mat[j][r]=c;
+                c++;
+            }
+            r--;
+            for(int j=r;j>=l;j--)
+            {
+                mat[d][j]=c;
+                c++;
+            }
+                d--;
+            
+        
+                for(int j=d;j>=t;j--)
+            {
+                mat[j][l]=c;
+                    c++;
+            }
+                l++;
+            
+            
+        }
+        return mat;
+    }
+};
