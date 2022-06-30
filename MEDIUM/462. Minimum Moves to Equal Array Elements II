@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int minMoves2(vector<int>& nums) {
+        int n=nums.size();
+        int last=n/2;
+        sort(nums.begin(),nums.end());
+        int element=nums[last];
+        for(int i=0;i<n;i++)
+        {
+            nums[i]=abs(nums[i]-element);
+        }
+        int sum=0;
+        for(auto i:nums)
+        {
+            sum+=i;
+        }
+        return sum;
+    }
+};
