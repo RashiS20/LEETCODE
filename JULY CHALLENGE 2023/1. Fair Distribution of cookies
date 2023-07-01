@@ -1,0 +1,29 @@
+class Solution {
+public:
+    void solve(vector<int>& cookies,int start,vector<int>& count,int k,int& ans)
+    {
+        int n=cookies.size();
+        if(start==n)
+        {
+            int maxm=INT_MIN;
+            for(int i=0;i<k;i++)
+            {
+                maxm=max(maxm,count[i]);
+            }
+            ans=min(ans,maxm);
+            return;
+        }
+        for(int i=0;i<k;i++)
+        {
+            count[i]+=cookies[start];
+            solve(cookies,start+1,count,k,ans);
+            count[i]-=cookies[start];
+        }
+    }
+    int distributeCookies(vector<int>& cookies, int k) {
+        int ans=INT_MAX;
+        vector<int> count(k,0);
+        solve(cookies,0,count,k,ans);
+        return ans;
+    }
+};
